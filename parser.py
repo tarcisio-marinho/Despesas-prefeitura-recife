@@ -1,5 +1,5 @@
 # import pandas as pd
-# import matplotlib as plt
+from matplotlib import pyplot as plt
 
 #download link -> http://dados.recife.pe.gov.br/dataset/despesas-orcamentarias
 
@@ -42,14 +42,69 @@ def concat(arq1, arq2, arq3, arq4, write_file=False):
 
 # this function will parse the dataset treating and cleaning the data
 def parser(dataset):
-    # descricao = dataset[0]
-    # new_dataset = dataset[1::]
-    pass
+    with open(dataset, encoding="utf8") as f:
+        dataset1 = f.read()
+    linhas = dataset1.split('\n')
+    descricao = linhas[0].split(';')
+    new_dataset = linhas[1::]
+    
+    total_gasto_2015_2018 = 0 
+    total_gasto_2015 = 0
+    total_gasto_2016 = 0
+    total_gasto_2017 = 0
+    total_gasto_2018 = 0
+    total_credor_nao_informado = 0
+    funcao_nome = [] # Nome dos locais onde o dinheiro foi gasto
+
+    for linha in new_dataset:
+        data = linha.split(';')
+        if(len(data) >= 38):
+
+            valor = data[38].replace(',', '.') # posição da lista que contém o valor pago
+            valor = float(valor)
+
+
+            if("CREDOR NÃO INFORMADO" == data[33]):
+                total_credor_nao_informado += valor
+
+            if(data[0] == "2015"):
+                total_gasto_2015 += valor
+
+            if(data[0] == "2016"):
+                total_gasto_2016 += valor
+
+            if(data[0] == "2017"):
+                total_gasto_2017 += valor
+
+            if(data[0] == "2018"):
+                total_gasto_2018 += valor
+
+            
+            if(data[19] not in funcao_nome):
+                funcao_nome.append(data[19])
+            
+            total_gasto_2015_2018 += valor 
+    
+#     print("Gastos totais de 2015 até 2018: {}\nGastos 2015: {}\nGastos 2016: {}\n\
+# Gastos 2017: {}\nGastos 2018: {}".format(
+#         total_gasto_2015_2018, total_gasto_2015, total_gasto_2016,
+#         total_gasto_2017, total_gasto_2018
+#     ))
+
+#     print("Total com credor não informado, de 2015 - 2018: {}".format(total_credor_nao_informado))
+    
+    
+#     print("porcentagem credor não informado {}%".format(round((total_credor_nao_informado * (1/100)) / total_gasto_2015_2018 * 10000, 4)))
+#     print("Na esquerda, o total de gastos por credor não informado, a direita o gasto total.")
+#     plt.bar(range(2), [total_credor_nao_informado, total_gasto_2015_2018])
+#     plt.show()
+
 
 if __name__ == "__main__":
     data_2015 = "data/recife-dados-despesas-2015.csv"
     data_2016 = "data/recife-dados-despesas-2016.csv"
     data_2017 = "data/recife-dados-despesas-2017.csv"
     data_2018 = "data/recife-dados-despesas-2018.csv"
-    retorno = concat(data_2015, data_2016, data_2017, data_2018)
-    parser(retorno)
+    new_file = "data/dados-2015-2016-2017-2018.csv"
+    # retorno = concat(data_2015, data_2016, data_2017, data_2018, True)
+    parser(new_file)
