@@ -85,19 +85,19 @@ def parser(dataset):
             
             total_gasto_2015_2018 += valor 
     
-#     print("Gastos totais de 2015 até 2018: {}\nGastos 2015: {}\nGastos 2016: {}\n\
-# Gastos 2017: {}\nGastos 2018: {}".format(
-#         total_gasto_2015_2018, total_gasto_2015, total_gasto_2016,
-#         total_gasto_2017, total_gasto_2018
-#     ))
+    print("Gastos totais de 2015 até 2018: {}\nGastos 2015: {}\nGastos 2016: {}\n\
+Gastos 2017: {}\nGastos 2018: {}".format(
+        total_gasto_2015_2018, total_gasto_2015, total_gasto_2016,
+        total_gasto_2017, total_gasto_2018
+    ))
 
-#     print("Total com credor não informado, de 2015 - 2018: {}".format(total_credor_nao_informado))
+    print("Total com credor não informado, de 2015 - 2018: {}".format(total_credor_nao_informado))
     
     
-#     print("porcentagem credor não informado {}%".format(round((total_credor_nao_informado * (1/100)) / total_gasto_2015_2018 * 10000, 4)))
-#     print("Na esquerda, o total de gastos por credor não informado, a direita o gasto total.")
-#     plt.bar(range(2), [total_credor_nao_informado, total_gasto_2015_2018])
-#     plt.show()
+    print("porcentagem credor não informado {}%".format(round((total_credor_nao_informado * (1/100)) / total_gasto_2015_2018 * 10000, 4)))
+    print("Na esquerda, o total de gastos por credor não informado, a direita o gasto total.")
+    plt.bar(range(2), [total_credor_nao_informado, total_gasto_2015_2018])
+    plt.show()
 
 
 if __name__ == "__main__":
