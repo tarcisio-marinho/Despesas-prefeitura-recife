@@ -1,3 +1,4 @@
+import pickle
 from __future__ import print_function
 import keras
 from keras.datasets import mnist
@@ -71,5 +72,13 @@ for h in hidden_n:
 print('\n\n\n\n')
 print('best accuracy: {}'.format(best_accuracy))
 print(all_settings)
-print('number hidden: {}\nlearning rate: {}\nnumber of epochs: {} \
+print('BEST_CONFIG:\nnumber hidden: {}\nlearning rate: {}\nnumber of epochs: {} \
 \nnumber of batchs: {}\n'.format(config[0], config[1], config[2], config[3]))
+
+
+
+data = [best_accuracy, all_settings, config]
+with open('config', 'wb') as f:
+    pickle.dump(data, f)
+
+# recovery = pickle.load(open('config', 'rb'))
