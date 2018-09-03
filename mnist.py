@@ -12,6 +12,7 @@ batchs_n = [32, 128, 512]
 
 all_settings = []
 best_accuracy = 0
+config = ()
 
 for h in hidden_n:
     for l in lr_n:
@@ -64,8 +65,11 @@ for h in hidden_n:
 
                 if(score[1] > best_accuracy):
                     best_accuracy = score[1]
+                    config = h, l, e, b
 
 
 print('\n\n\n\n')
 print('best accuracy: {}'.format(best_accuracy))
 print(all_settings)
+print('number hidden: {}\nlearning rate: {}\nnumber of epochs: {} \
+\nnumber of batchs: {}\n'.format(config[0], config[1], config[2], config[3]))
