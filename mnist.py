@@ -11,7 +11,7 @@ lr_n = [0.1, 0.01, 0.001]
 epoch_n = [10, 30, 50]
 batchs_n = [32, 128, 512]
 
-batch_size = 32
+batch_size = 512
 num_classes = 10
 epochs = 10
 
@@ -32,14 +32,14 @@ y_train = keras.utils.to_categorical(y_train, num_classes)
 y_test = keras.utils.to_categorical(y_test, num_classes)
 
 model = Sequential()
-model.add(Dense(32, activation='relu', input_shape=(784,)))
+model.add(Dense(128, activation='relu', input_shape=(784,)))
 model.add(Dropout(0.2))
 model.add(Dense(num_classes, activation='softmax'))
 
 model.summary()
 
 model.compile(loss='categorical_crossentropy',
-            optimizer=RMSprop(lr=0.1),
+            optimizer=RMSprop(lr=0.001),
             metrics=['accuracy'])
 
 history = model.fit(x_train, y_train,
