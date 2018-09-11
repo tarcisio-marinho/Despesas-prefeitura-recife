@@ -97,10 +97,10 @@ def parser(dataset):
 #     print("Total com credor não informado, de 2015 - 2018: {}".format(total_credor_nao_informado))
     
     
-#     print("porcentagem credor não informado {}%".format(round((total_credor_nao_informado * (1/100)) / total_gasto_2015_2018 * 10000, 4)))
-#     print("Na esquerda, o total de gastos por credor não informado, a direita o gasto total.")
-#     plt.bar(range(2), [total_credor_nao_informado, total_gasto_2015_2018])
-#     plt.show()
+    print("porcentagem credor não informado {}%".format(round((total_credor_nao_informado * (1/100)) / total_gasto_2015_2018 * 10000, 4)))
+    print("Na esquerda, o total de gastos por credor não informado, a direita o gasto total.")
+    plt.bar(range(2), [total_credor_nao_informado, total_gasto_2015_2018])
+    plt.show()
 
 
 if __name__ == "__main__":
