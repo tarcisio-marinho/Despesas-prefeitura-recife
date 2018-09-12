@@ -1,0 +1,5 @@
+ batch_size = 32
+    num_classes = 10
+    epochs = 10
+    hidde_n = 32
+    lr = 0.1

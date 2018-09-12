@@ -1,0 +1,4 @@
+ epoch = 10
+    batch_size = 512
+    lr = 0.001
+    hidden = 128
