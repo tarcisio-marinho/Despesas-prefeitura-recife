@@ -1,4 +1,7 @@
-#setwd("")
+setwd(".")
+
+
+
 library(data.table)
 whisky = fread("whiskies.txt")
 library(ggplot2)
